@@ -21,6 +21,7 @@ Also need to add some (or all) of the following 'Security & Privacy' setting:
     /System/Applications/Utilities/Script Editor.app
     /System/Library/CoreServices/AppleScript Utility
     /System/Library/CoreServices/System Events.app
+    /usr/local/bin/bash
     /Applications/Setapp/ForkLift.app
 
 Reference:
