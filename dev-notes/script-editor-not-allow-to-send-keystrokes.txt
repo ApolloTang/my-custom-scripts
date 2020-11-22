@@ -1,0 +1,27 @@
+Solved this this error:
+
+  Script Editor:
+    System Events got an error: Script Editor is not allowed to send keystrokes.
+
+  Need to add some (or all) of the following 'Security & Privacy' setting:
+
+    Goto:
+      System Preferences -> Security & Privacy -> Accessibility
+      System Preferences -> Security & Privacy -> Input Monitoring
+    Add:
+      /System/Applications/Utilities/Script Editor.app
+      /System/Library/CoreServices/AppleScript Utility
+      /System/Library/CoreServices/System Events.app
+      /usr/local/bin/bash
+      /Applications/Setapp/ForkLift.app
+
+
+    I also added the the appified app itself to 'Security & Privacy', eg:
+      /path/to/my-custom-scripts/script-for-apps/forklift/forklift--open-new-window/forklift-new-window.app
+
+Reference:
+  https://apple.stackexchange.com/questions/394275/com-automator-runner-xpc-is-not-allowed-to-send-keystrokes#
+  https://apple.stackexchange.com/questions/291574/osascript-is-not-allowed-assistive-access-1728
+
+tags:
+  applescript-keystroke-permission
