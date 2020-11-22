@@ -12,14 +12,19 @@ set -e  #/ Exit immediately if a command exits with a non-zero status.
 Author: https://github.com/ApolloTang
 This script open a new forklift window
 
-Make sure you endable "Script Editor.app" in Accesibility
+Also need to add some (or all) of the following 'Security & Privacy' setting:
 
-Goto:
-  System Preferences -> Security & Privacy -> Accessibility
-  System Preferences -> Security & Privacy -> Input Monitoring
-Add:
-  /System/Applications/Utilities/Script Editor.app
+  Goto:
+    System Preferences -> Security & Privacy -> Accessibility
+    System Preferences -> Security & Privacy -> Input Monitoring
+  Add:
+    /System/Applications/Utilities/Script Editor.app
+    /System/Library/CoreServices/AppleScript Utility
+    /System/Library/CoreServices/System Events.app
+    /Applications/Setapp/ForkLift.app
 
+Reference:
+  https://apple.stackexchange.com/questions/394275/com-automator-runner-xpc-is-not-allowed-to-send-keystrokes#
 *)
 
 
@@ -28,9 +33,9 @@ if application "ForkLift" is not running then
   # (But it's not making it the frontmost/focused application)
   activate application "ForkLift"
 else
-  tell application "ForkLift"
-    activate
-    tell application "System Events"
+  activate application "ForkLift"
+  tell application "System Events"
+    tell process "ForkLift"
       keystroke "n" using {command down}
     end tell
   end tell
